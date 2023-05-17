@@ -1,5 +1,5 @@
 env:
-    MANIFEST: https://github.com/P-404/android_manifest -b tokui
+    MANIFEST: https://github.com/P-404/android_manifest -b tokui --depth=1 --no-repo-verify
     DEVICE: RMX2020
     OEM: realme
     DT_LINK: https://github.com/SatoruGojo2k23/device_realme_RMX2020.git
@@ -58,13 +58,15 @@ task:
       - mkdir -p ~/work
       - cd ~/work
       - repo init -u $MANIFEST
-      - repo sync -j31 --force-sync --no-tags --no-clone-bundle
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - git clone --depth=1 $DT_LINK $DT_PATH
       - git clone --depth=1 $VT_LINK $VT_PATH
       - git clone --depth=1 $VTI_LINK $VTI_PATH
       - git clone --depth=1 $CL_LINK $CL_PATH
       - git clone --depth=1 $SE_LINK $SE_PATH
       - git clone --depth=1 $KT_LINK $KT_PATH
+      - rm -rf vendor/qcom/opensource/dataservices
+      - git clone --depth=1 https://github.com/SatoruGojo2k23/vendor_qcom-opensource_dataservices vendor/qcom/opensource/dataservices
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
