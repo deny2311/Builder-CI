@@ -1,24 +1,24 @@
 env:
-    MANIFEST: https://github.com/CherishOS/android_manifest.git -b tiramisu
+    MANIFEST: https://github.com/P-404/android_manifest -b tokui
     DEVICE: RMX2020
     OEM: realme
-    DT_LINK: https://github.com/rinto02/device_realme_RMX2020.git
+    DT_LINK: https://github.com/SatoruGojo2k23/device_realme_RMX2020.git
     DT_PATH: device/$OEM/$DEVICE
-    VT_LINK: https://github.com/rinto02/vendor_realme_RMX2020.git
+    VT_LINK: https://github.com/SatoruGojo2k23/vendor_realme_RMX2020.git
     VT_PATH: vendor/$OEM/$DEVICE
-    VTI_LINK: https://github.com/rinto02/vendor_realme_RMX2020-ims.git
+    VTI_LINK: https://github.com/SatoruGojo2k23/vendor_realme_RMX2020-ims.git
     VTI_PATH: vendor/realme/RMX2020-ims
-    CL_LINK: https://github.com/rinto02/proton-clang.git
-    CL_PATH: prebuilts/clang/host/linux-x86/clang-proton
-    SE_LINK: https://github.com/rinto02/device_mediatek_sepolicy_vndr.git
+    CL_LINK: https://github.com/SatoruGojo2k23/prebuilts_clang_host_linux-x86_clang-r437112.git
+    CL_PATH: prebuilts/clang/host/linux/clang-r437112
+    SE_LINK: https://github.com/SatoruGojo2k23/device_mediatek_sepolicy_vndr.git
     SE_PATH: device/mediatek/sepolicy_vndr
-    KT_LINK: https://github.com/rinto02/kernel_realme_RMX2020.git
+    KT_LINK: https://github.com/SatoruGojo2k23/kernel_realme_RMX2020.git
     PLATFORM: mt6768
     KT_PATH: kernel/$OEM/$DEVICE
     TARGET: bacon
     EXTRA_CMD: export SKIP_ABI_CHECKS=true
-    LUNCH_COMBO: cherish_${DEVICE}-userdebug
-    OUTPUT: CherishOS*.zip
+    LUNCH_COMBO: p404_${DEVICE}-userdebug
+    OUTPUT: Project-404*.zip
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -39,8 +39,8 @@ task:
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache clang -y
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - git config --global user.name "Rinto02"
-       - git config --global user.email "rintokhan411@gmail.com"
+       - git config --global user.name "SatoruGojo"
+       - git config --global user.email "satorugojo4200@gmail.com"
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -65,8 +65,6 @@ task:
       - git clone --depth=1 $CL_LINK $CL_PATH
       - git clone --depth=1 $SE_LINK $SE_PATH
       - git clone --depth=1 $KT_LINK $KT_PATH
-      - rm -rf frameworks/base
-      - git clone --depth=1 https://github.com/rinto02/cherish_frameworks_base frameworks/base
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -81,7 +79,8 @@ task:
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - brunch RMX2020
+      - lunch p404_RMX2020-userdebug
+      - make bacon
      
   Upload_script:
       - echo "============================"
