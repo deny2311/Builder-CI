@@ -73,6 +73,8 @@ task:
       - git clone --depth=1 https://github.com/SatoruGojo2k23/android_vendor_qcom_opensource_data-ipa-cfg-mgr vendor/qcom/opensource/data-ipa-cfg-mgr/
       - rm -rf vendor/qcom/opensource/dataservices
       - git clone --depth=1 https://github.com/SatoruGojo2k23/vendor_qcom-opensource_dataservices vendor/qcom/opensource/dataservices
+      - rm -rf vendor/qcom/opensource/vibrator
+      - git clone --depth=1 https://github.com/SatoruGojo2k23/android_vendor_qcom-opensource_vibrator vendor/qcom/opensource/vibrator
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
