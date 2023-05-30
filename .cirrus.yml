@@ -40,9 +40,9 @@ task:
       - mkdir -p ~/work
       - cd ~/work
       - repo init --depth=1 -u git://github.com/PixelExperience/manifest.git -b twelve || true
-       - rm -rf .repo/local_manifests || true
+      - rm -rf .repo/local_manifests || true
       - git clone https://github.com/IdkAnythin07/local_manifest.git --depth 1 -b Pixel_exp .repo/local_manifests
-       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
+      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
