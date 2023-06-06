@@ -93,7 +93,7 @@ task:
       - echo "============================"
       - echo "Uploading the Build..."
       - echo "============================"
-      - cd ~/work
+      - cd ~/android/lineage
       - cd out/target/product/"$DEVICE"
       - ls -lh
       - pwd
