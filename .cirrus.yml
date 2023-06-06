@@ -1,10 +1,28 @@
 env:
+    MANIFEST: https://github.com/P-404/android_manifest -b tokui --depth=1 --no-repo-verify
     DEVICE: tissot
+    OEM: xiaomi
+    DT_LINK: https://github.com/LineageOS/android_device_xiaomi_tissot.git
+    DT_PATH: device/xiaomi/tissot
+    DTCM_LINK: https://github.com/LineageOS/android_device_xiaomi_msm8953-common.git
+    DTCM_PATH: device/xiaomi/msm8953-common
+    VT_LINK: https://gitlab.com/The-Muppets/proprietary_vendor_firmware.git
+    VT_PATH: vendor/firmware
+    VTI_LINK: https://gitlab.com/The-Muppets/The-Muppets/proprietary_vendor_xiaomi.git
+    VTI_PATH: vendor/xiaomi
+    CL_LINK: https://github.com/SatoruGojo2k23/proton-clang.git
+    CL_PATH: prebuilts/clang/host/linux/clang-proton
+    SE_LINK: https://github.com/LineageOS/android_kernel_xiaomi_msm8953.git
+    SE_PATH: kernel/xiaomi/msm8953
+    PLATFORM: msm8953
+    TARGET: bacon
+    EXTRA_CMD: export SKIP_ABI_CHECKS=true
+    LUNCH_COMBO: lineage_tissot-userdebug
     OUTPUT: Project-404*.zip
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
-  timeout_in: 301m  
+  timeout_in: 300m  
   container:
       image: ubuntu:latest
       cpu: 8
@@ -21,8 +39,8 @@ task:
        - sudo apt update -y && sudo apt install git aria2 curl wget rsync zip unzip lzma cpio ccache clang -y
        - sudo apt install python3 -y
        - sudo ln -sf /usr/bin/python3 /usr/bin/python
-       - git config --global user.name "SatoruGojo"
-       - git config --global user.email "satorugojo4200@gmail.com"
+       - git config --global user.name "SatoruGojo98667"
+       - git config --global user.email "satorugojo67890@gmail.com"
        - git clone https://github.com/akhilnarang/scripts.git ~/scripts
        - cd ~/scripts
        - sudo bash setup/android_build_env.sh
@@ -37,12 +55,23 @@ task:
       - echo "============================"
       - echo "Syncing The Sources..."
       - echo "============================"
-      - mkdir -p ~/work
-      - cd ~/work
-      - repo init --depth=1 --no-repo-verify -u https://github.com/PixelExperience/manifest.git -b twelve -g default,-mips,-darwin,-notdefault
-      - rm -rf .repo/local_manifests || true
-      - git clone https://github.com/IdkAnythin07/local_manifest.git --depth 1 -b Pixel_exp .repo/local_manifests
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - mkdir -p ~/android/lineage
+      - cd ~/android/lineage
+      - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1 --git-lfs
+      - repo sync
+      - rm -rf device/xiaomi/tissot
+      - git clone --depth=1 $DT_LINK $DT_PATH
+      - rm -rf device/xiaomi/msm8953-common
+      - git clone --depth=1 $DTCM_LINK $DTCM_PATH
+      - rm -rf vendor/firmware
+      - git clone --depth=1 $VT_LINK $VT_PATH
+      - rm -rf vendor/xiaomi
+      - git clone --depth=1 $VTI_LINK $VTI_PATH
+      - git clone --depth=1 $CL_LINK $CL_PATH
+      - rm -rf kernel/xiaomi/msm8953
+      - git clone --depth=1 $SE_LINK $SE_PATH
+      - rm -rf frameworks/base
+      - git clone -b ninihao9-new --single-branch --depth=1 https://github.com/ninihao9/android_frameworks_base.git ~/android/lineage/framework/base
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -51,12 +80,14 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd ~/work
+      - cd ~/android/lineage
+      - $EXTRA_CMD
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
       - . build/envsetup.sh
-      - lunch aosp_tissot-userdebug
+      - lunch lineage_tissot-userdebug
+      - make bacon
      
   Upload_script:
       - echo "============================"
@@ -76,4 +107,3 @@ task:
       - cat link.txt && echo " "
       - echo "============================"
         
-
