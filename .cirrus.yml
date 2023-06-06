@@ -6,9 +6,9 @@ env:
     DT_PATH: device/xiaomi/tissot
     DTCM_LINK: https://github.com/LineageOS/android_device_xiaomi_msm8953-common.git
     DTCM_PATH: device/xiaomi/msm8953-common
-    VT_LINK: https://gitlab.com/The-Muppets/proprietary_vendor_firmware.git
+    VT_LINK: https://gitlab.com/the-muppets/proprietary_vendor_firmware.git
     VT_PATH: vendor/firmware
-    VTI_LINK: https://gitlab.com/The-Muppets/The-Muppets/proprietary_vendor_xiaomi.git
+    VTI_LINK: https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git
     VTI_PATH: vendor/xiaomi
     CL_LINK: https://github.com/SatoruGojo2k23/proton-clang.git
     CL_PATH: prebuilts/clang/host/linux/clang-proton
