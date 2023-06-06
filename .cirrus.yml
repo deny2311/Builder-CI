@@ -64,7 +64,7 @@ task:
       - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_firmware.git ~/android/lineage/vendor/firmware
       - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git ~/android/lineage/vendor/xiaomi  
       - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_kernel_xiaomi_msm8953.git ~/android/lineage/kernel/xiaomi/msm8953
-      - git clone --depth=1 $SE_LINK $SE_PATH
+      - git clone --depth=1 $CL_LINK $CL_PATH
       - rm -rf frameworks/base
       - git clone -b ninihao9-new --single-branch --depth=1 https://github.com/ninihao9/android_frameworks_base.git ~/android/lineage/framework/base
       - echo "============================"
