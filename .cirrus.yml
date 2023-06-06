@@ -82,7 +82,7 @@ task:
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch lineage_tissot-userdebug
-      - make bacon
+      - make bacon -j8 | tee ~/build.log-$(date '+%Y%m%d-%H').txt
      
   Upload_script:
       - echo "============================"
