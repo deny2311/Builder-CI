@@ -1,5 +1,5 @@
 env:
-    MANIFEST: https://github.com/P-404/android_manifest -b tokui --depth=1 --no-repo-verify
+    MANIFEST: https://github.com/P-404/android_manifest -b tokui --depth=0 --no-repo-verify
     DEVICE: tissot
     OEM: xiaomi
     DT_LINK: https://github.com/LineageOS/android_device_xiaomi_tissot.git
@@ -82,7 +82,7 @@ task:
       - ccache -M 50G
       - . build/envsetup.sh
       - lunch lineage_tissot-userdebug
-      - make bacon -j8 | tee ~/build.log-$(date '+%Y%m%d-%H').txt
+      - make bacon
      
   Upload_script:
       - echo "============================"
