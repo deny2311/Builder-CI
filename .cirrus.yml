@@ -22,7 +22,7 @@ env:
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
-  timeout_in: 400m  
+  timeout_in: 401m  
   container:
       image: ubuntu:latest
       cpu: 8
