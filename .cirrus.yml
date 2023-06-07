@@ -59,14 +59,14 @@ task:
       - cd ~/android/lineage
       - repo init -u https://github.com/LineageOS/android.git -b lineage-18.1 --git-lfs
       - repo sync	  
-      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_device_xiaomi_tissot.git ~/android/lineage/device/xiaomi/tissot
-      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_device_xiaomi_msm8953-common.git ~/android/lineage/device/xiaomi/msm8953-common
-      - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_firmware.git ~/android/lineage/vendor/firmware
-      - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git ~/android/lineage/vendor/xiaomi  
-      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_kernel_xiaomi_msm8953.git ~/android/lineage/kernel/xiaomi/msm8953
       - git clone --depth=1 $CL_LINK $CL_PATH
       - rm -rf frameworks/base
       - git clone -b ninihao9-new --single-branch --depth=1 https://github.com/ninihao9/android_frameworks_base.git ~/android/lineage/framework/base
+      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_device_xiaomi_tissot.git ~/android/lineage/device/xiaomi/tissot
+      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_device_xiaomi_msm8953-common.git ~/android/lineage/device/xiaomi/msm8953-common
+      - git clone -b lineage-18.1 --single-branch --depth=1 https://github.com/LineageOS/android_kernel_xiaomi_msm8953.git ~/android/lineage/kernel/xiaomi/msm8953
+      - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_firmware.git ~/android/lineage/vendor/firmware
+      - git clone -b lineage-18.1 --single-branch --depth=1 https://gitlab.com/the-muppets/proprietary_vendor_xiaomi.git ~/android/lineage/vendor/xiaomi  
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
