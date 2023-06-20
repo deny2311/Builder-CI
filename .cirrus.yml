@@ -55,8 +55,8 @@ task:
       - echo "============================"
       - mkdir -p ~/android/xtended
       - cd ~/android/xtended
-      - repo init —depth 1 -u https://github.com/Project-Xtended/manifest.git -b xt
-      - repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+      - repo init -u https://github.com/Project-Xtended/manifest.git -b xt --git-lfs
+      - repo sync
       - git clone -b xt13 --single-branch --depth=1  https://github.com/Sagit-A13/device_xiaomi_sagit.git ~/android/xtended/device/xiaomi/sagit
       - git clone -b evox13 --single-branch --depth=1 https://github.com/Sagit-A13/device_xiaomi_msm8998-common.git ~/android/xtended/device/xiaomi/msm8998-common
       - git clone -b lineage-20 --single-branch --depth=1 https://github.com/Sagit-A13/kernel_xiaomi_msm8998.git ~/android/xtended/kernel/xiaomi/msm8998
