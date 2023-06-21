@@ -57,11 +57,13 @@ task:
       - cd ~/android/xtended
       - repo init -u https://github.com/Project-Xtended/manifest.git -b xt --git-lfs
       - repo sync
-      - git clone -b xt13 --single-branch --depth=1  https://github.com/Sagit-A13/device_xiaomi_sagit.git ~/android/xtended/device/xiaomi/sagit
-      - git clone -b evox13 --single-branch --depth=1 https://github.com/Sagit-A13/device_xiaomi_msm8998-common.git ~/android/xtended/device/xiaomi/msm8998-common
-      - git clone -b lineage-20 --single-branch --depth=1 https://github.com/Sagit-A13/kernel_xiaomi_msm8998.git ~/android/xtended/kernel/xiaomi/msm8998
-      - git clone -b lineage-20 --single-branch --depth=1 https://github.com/Sagit-A13/proprietary_vendor_xiaomi_sagit.git ~/android/xtended/vendor/xiaomi/sagit
-      - git clone -b 13 --single-branch --depth=1 https://github.com/Sagit-A13/proprietary_vendor_xiaomi_msm8998-common.git ~/android/xtended/vendor/xiaomi/msm8998-common
+      - rm -rf ~/android/xtended/vendor/google/interfaces
+      - git clone -b tm-qpr3 https://github.com/StatiXOS/android_vendor_google_interfaces.git vendor/google/interfaces
+      - git clone -b xt13 https://github.com/Sagit-A13/device_xiaomi_sagit.git ~/android/xtended/device/xiaomi/sagit
+      - git clone -b evox13 https://github.com/Sagit-A13/device_xiaomi_msm8998-common.git ~/android/xtended/device/xiaomi/msm8998-common
+      - git clone -b lineage-20 https://github.com/Sagit-A13/kernel_xiaomi_msm8998.git ~/android/xtended/kernel/xiaomi/msm8998
+      - git clone -b lineage-20 https://github.com/Sagit-A13/proprietary_vendor_xiaomi_sagit.git ~/android/xtended/vendor/xiaomi/sagit
+      - git clone -b 13 https://github.com/Sagit-A13/proprietary_vendor_xiaomi_msm8998-common.git ~/android/xtended/vendor/xiaomi/msm8998-common
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
