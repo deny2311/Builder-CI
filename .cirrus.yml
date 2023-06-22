@@ -48,7 +48,7 @@ task:
       - df -h
       - lsblk
       - ls -l -a -h
-      - ./w.sh
+#      - ./w.sh
 
   Sync_script:
       - echo "============================"
