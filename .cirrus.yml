@@ -48,16 +48,7 @@ task:
       - df -h
       - lsblk
       - ls -l -a -h
-      - export CCACHE_DIR=~/ccache
-      - sleep 1m
-
-      - while :
-      - do
-      - ccache -s
-      - echo ''
-      - top -b -i -n 1
-      - sleep 5s
-      - done
+      - ./w.sh
 
   Sync_script:
       - echo "============================"
@@ -82,21 +73,9 @@ task:
       - echo "============================"
       - echo "Starting the Build..."
       - echo "============================"
-      - cd ~/android/xtended
-      - $EXTRA_CMD
-      - . build/envsetup.sh
-      - export TZ=Asia/Jakarta
-      - export CCACHE_DIR=~/ccache
-      - export CCACHE_EXEC=$(which ccache)
-      - export USE_CCACHE=1
-      - ccache -M 100G -F 0
-      - ccache -o compression=true
-      - ccache -z
-      - lunch xtended_sagit-userdebug
-      - make xtended -j8 &
-      - sleep 100m
-      - kill %1
-      - ccache -s
+      - ./collect.sh
+#      - ./final.sh
+      - echo "Build Completed"
      
   Upload_script:
       - echo "============================"
